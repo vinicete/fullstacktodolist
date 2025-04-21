@@ -1,10 +1,10 @@
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
-const TaskItem = ({taskName, createdAt, status}) => {
+const TaskItem = ({taskName, createdAt, status, id, onRefreshTasks, onEditingTask}) => {
 
   function handleChange(){
-
+    
   }
   return (  
     <tr className="border-t border-gray-300 ">
@@ -14,7 +14,7 @@ const TaskItem = ({taskName, createdAt, status}) => {
         
         <select name="status" 
         id="status"
-        value={status}
+        
         onChange={handleChange}
         >
           <option value="pendente">Pendente</option>
@@ -22,8 +22,8 @@ const TaskItem = ({taskName, createdAt, status}) => {
           <option value="concluida">Concluida</option>        
         </select></th>
       <th className="border-r border-gray-300 font-medium text-md flex gap-2 justify-center p-1 items-center">
-        <EditButton/>
-        <DeleteButton/>
+        <EditButton onEditingTask={onEditingTask}/>
+        <DeleteButton onRefreshTasks={onRefreshTasks} taskId={id}/>
       </th>
     </tr>
    );

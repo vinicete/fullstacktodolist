@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem";
 
-const TaskGrid = () => {
+const TaskGrid = ({taskList, onRefreshTasks, onEditingTask}) => {
   return ( 
     <table className="min-w-full">
       <thead className="min-w-full border-collapse border border-gray-300">
@@ -11,8 +11,15 @@ const TaskGrid = () => {
           <th>Ações</th>
         </tr>
 
-        <TaskItem taskName={'aa'} createdAt={'aa'} status={'concluida'}/>
-        
+
+        {taskList.map(tasks => {
+          return(
+            <TaskItem onEditingTask={onEditingTask} onRefreshTasks={onRefreshTasks} taskName={tasks.title} createdAt={tasks.created_at} status={tasks.status} id={tasks.id}/>
+          )
+        })}
+
+        {console.log(taskList)}
+
       </thead>
       
     </table>

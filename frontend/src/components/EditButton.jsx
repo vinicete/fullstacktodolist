@@ -1,8 +1,13 @@
 import {FaPencilAlt} from 'react-icons/fa'
 
-const EditButton = () => {
+const EditButton = ({onEditingTask}) => {
+
+  const handleEdit=()=>{
+    onEditingTask(true)
+  }
+
   return ( 
-    <button className='bg-amber-500 text-white p-1.5 rounded-sm cursor-pointer'>
+    <button onClick={handleEdit} className='bg-amber-500 text-white p-1.5 rounded-sm cursor-pointer'>
       <FaPencilAlt/>
     </button>
    );
