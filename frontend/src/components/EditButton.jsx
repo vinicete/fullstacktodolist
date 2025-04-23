@@ -1,9 +1,9 @@
 import {FaPencilAlt} from 'react-icons/fa'
 
-const EditButton = ({onEditingTask}) => {
+const EditButton = ({onEditingTask,taskId}) => {
 
   const handleEdit=()=>{
-    onEditingTask(true)
+    onEditingTask(true,taskId)
   }
 
   return ( 

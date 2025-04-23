@@ -14,7 +14,7 @@ const TaskItem = ({taskName, createdAt, status, id, onRefreshTasks, onEditingTas
         
         <select name="status" 
         id="status"
-        
+        value={status}
         onChange={handleChange}
         >
           <option value="pendente">Pendente</option>
@@ -22,7 +22,7 @@ const TaskItem = ({taskName, createdAt, status, id, onRefreshTasks, onEditingTas
           <option value="concluida">Concluida</option>        
         </select></th>
       <th className="border-r border-gray-300 font-medium text-md flex gap-2 justify-center p-1 items-center">
-        <EditButton onEditingTask={onEditingTask}/>
+        <EditButton taskId={id} onEditingTask={onEditingTask}/>
         <DeleteButton onRefreshTasks={onRefreshTasks} taskId={id}/>
       </th>
     </tr>

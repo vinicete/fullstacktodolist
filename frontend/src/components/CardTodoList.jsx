@@ -7,6 +7,7 @@ function CardTodoList(){
 
   const [tasks,setTasks] = useState([])
   const [modalState, setModalState] = useState(false)
+  const [editingTaskId, setEditingTaskId] = useState(null)
 
   useEffect(() => {
     const url = "http://localhost:3333/tasks"
@@ -22,8 +23,9 @@ function CardTodoList(){
     setTasks(tasksFromBackend)
   }
 
-  const onEditingTask = (open)=>{
+  const onEditingTask = (open,id)=>{
     setModalState(open)
+    setEditingTaskId(id)
   }
 
   
@@ -34,7 +36,11 @@ function CardTodoList(){
         <TaskGrid onEditingTask={onEditingTask} onRefreshTasks={onRefreshTasks} taskList={tasks}/>
       </div>
 
-      {modalState && <EditModal onEditingTask={onEditingTask}/>}
+      {modalState && editingTaskId && <EditModal 
+      onRefreshTasks={onRefreshTasks} 
+      onEditingTask={onEditingTask}
+      taskId={editingTaskId}
+      />}
          
     </div>
 
